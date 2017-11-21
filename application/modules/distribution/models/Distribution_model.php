@@ -3,7 +3,7 @@
 class Distribution_model extends CI_Model {
 
 	function distribution($interviewer,$total){
-		$query = "UPDATE candidate SET interviewer = ".$interviewer.",dist_date = if(dist_date = '0000-00-00','".date('Y-m-d')."',dist_date) WHERE event = ".$this->event['id']." AND interviewer = 0 ORDER BY co ASC LIMIT ".$total;
+		$query = "UPDATE candidate SET dist_date = '".date('Y-m-d')."', interviewer = ".$interviewer.",dist_date_first = if(dist_date_first = '0000-00-00','".date('Y-m-d')."',dist_date_first) WHERE event = ".$this->event['id']." AND interviewer = 0 ORDER BY co ASC LIMIT ".$total;
 		$this->db->query($query);
 		return $this->db->affected_rows();
 	}	

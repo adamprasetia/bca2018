@@ -12,11 +12,16 @@
 		<div class="box-body">
 			<?php echo form_open($action,array('class'=>'form-inline'))?>
 				<div class="form-group">
-					Date : 
+					First Dist Date : 
+					<?php echo form_input(array('name'=>'date_from_first','class'=>'form-control input-tanggal','size'=>'10','value'=>$this->input->get('date_from_first')))?>
+					<?php echo form_input(array('name'=>'date_to_first','class'=>'form-control input-tanggal','size'=>'10','value'=>$this->input->get('date_to_first')))?>
+				</div>
+				<div class="form-group">
+					Dist Date : 
 					<?php echo form_input(array('name'=>'date_from','class'=>'form-control input-tanggal','size'=>'10','value'=>$this->input->get('date_from')))?>
 					<?php echo form_input(array('name'=>'date_to','class'=>'form-control input-tanggal','size'=>'10','value'=>$this->input->get('date_to')))?>
-					<button class="btn btn-primary btn-sm" type="submit"><span class="glyphicon glyphicon-filter"></span> Filter</button>
 				</div>
+				<button class="btn btn-primary btn-sm" type="submit"><span class="glyphicon glyphicon-filter"></span> Filter</button>
 			<?php echo form_close()?>
 		</div>
 	</div>

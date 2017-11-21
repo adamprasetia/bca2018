@@ -11,6 +11,10 @@ class Report_model extends CI_Model {
 			$this->db->where('a.dist_date >=',format_ymd($this->input->get('date_from')));
 			$this->db->where('a.dist_date <=',format_ymd($this->input->get('date_to')));
 		}
+		if ($this->input->get('date_from_first') && $this->input->get('date_to_first')) {
+			$this->db->where('a.dist_date_first >=',format_ymd($this->input->get('date_from_first')));
+			$this->db->where('a.dist_date_first <=',format_ymd($this->input->get('date_to_first')));
+		}
 		$this->db->group_by('a.status');
 		return $this->db->get()->result();
 	}

@@ -15,6 +15,8 @@ class Report extends MY_Controller {
 	}
 	public function search(){
 		$data = array(
+			'date_from_first'=>$this->input->post('date_from_first'),
+			'date_to_first'=>$this->input->post('date_to_first'),
 			'date_from'=>$this->input->post('date_from'),
 			'date_to'=>$this->input->post('date_to')
 		);
