@@ -30,9 +30,6 @@ class Export extends MY_Controller {
 			$active_sheet->setTitle('Candidate');
 			
 			//style
-			// $active_sheet->getStyle('A1:AA1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FF0000');
-			// $active_sheet->getStyle("A1:AA1")->getFont()->getColor()->setRGB('FFFFFF');			
-			// $active_sheet->getStyle("A1:AA1")->getBorders()->getBottom()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
 			$active_sheet->getStyle("A1:AB1")->getFont()->setBold(true);
 
 			//header
@@ -56,14 +53,16 @@ class Export extends MY_Controller {
 			$active_sheet->setCellValue('R1', 'NEW MOBILE');
 			$active_sheet->setCellValue('S1', 'NEW EMAIL');
 			$active_sheet->setCellValue('T1', 'KNOW EVENT');
-			$active_sheet->setCellValue('U1', 'PRE-REGISTRATION');
-			$active_sheet->setCellValue('V1', 'SEND EMAIL TO');
-			$active_sheet->setCellValue('W1', 'PARTNER INVITE');
-			$active_sheet->setCellValue('X1', 'REMARK');
-			$active_sheet->setCellValue('Y1', 'DISTRIBUTION DATE');
-			$active_sheet->setCellValue('Z1', 'STATUS');
-			$active_sheet->setCellValue('AA1', 'CALL HISTORY');
-			$active_sheet->setCellValue('AB1', 'TOTAL DIALED');
+			$active_sheet->setCellValue('U1', 'GET EMAIL');
+			$active_sheet->setCellValue('V1', 'GET MOBILE');
+			$active_sheet->setCellValue('W1', 'TITLE VERIFICATION');
+			$active_sheet->setCellValue('X1', 'CO VERIFICATION');
+			$active_sheet->setCellValue('Y1', 'ADD VERIFICATION');
+			$active_sheet->setCellValue('Z1', 'REMARK');
+			$active_sheet->setCellValue('AA1', 'DISTRIBUTION DATE');
+			$active_sheet->setCellValue('AB1', 'STATUS');
+			$active_sheet->setCellValue('AC1', 'CALL HISTORY');
+			$active_sheet->setCellValue('AD1', 'TOTAL DIALED');
 			
 			$date_from 	= format_ymd($this->input->post('date_from'));
 			$date_to 	= format_ymd($this->input->post('date_to'));
@@ -92,16 +91,18 @@ class Export extends MY_Controller {
 				$active_sheet->setCellValueExplicit('R'.$i, $r->mobile_new);
 				$active_sheet->setCellValue('S'.$i, $r->email_new);
 				$active_sheet->setCellValue('T'.$i, $this->yesno($r->know));
-				$active_sheet->setCellValue('U'.$i, $this->yesno($r->register));
-				$active_sheet->setCellValue('V'.$i, $r->send_email);
-				$active_sheet->setCellValue('W'.$i, $this->yesno($r->partner));
-				$active_sheet->setCellValue('X'.$i, $r->remark);
-				$active_sheet->setCellValue('Y'.$i, PHPExcel_Shared_Date::PHPToExcel(date_to_excel($r->dist_date)));
-				$active_sheet->getStyle('Y'.$i)->getNumberFormat()->setFormatCode('dd/mm/yyyy');		   
-				$active_sheet->setCellValue('Z'.$i, $r->status_name);
+				$active_sheet->setCellValue('U'.$i, $this->yesno($r->get_email));
+				$active_sheet->setCellValue('V'.$i, $this->yesno($r->get_mobile));
+				$active_sheet->setCellValue('W'.$i, $r->title_ver);
+				$active_sheet->setCellValue('X'.$i, $r->co_ver);
+				$active_sheet->setCellValue('Y'.$i, $r->add_ver);
+				$active_sheet->setCellValue('Z'.$i, $r->remark);
+				$active_sheet->setCellValue('AA'.$i, PHPExcel_Shared_Date::PHPToExcel(date_to_excel($r->dist_date)));
+				$active_sheet->getStyle('AA'.$i)->getNumberFormat()->setFormatCode('dd/mm/yyyy');		   
+				$active_sheet->setCellValue('AB'.$i, $r->status_name);
 				$callhis = $this->general->callhis($r->id);
-				$active_sheet->setCellValue('AA'.$i, implode(',',$callhis));
-				$active_sheet->setCellValue('AB'.$i, count($callhis));
+				$active_sheet->setCellValue('AC'.$i, implode(',',$callhis));
+				$active_sheet->setCellValue('AD'.$i, count($callhis));
 				$i++;
 			}
 

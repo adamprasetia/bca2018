@@ -14,7 +14,7 @@
 	<div class="box">
 		<div class="box-body">
 			<div class="form-group form-inline">
-				<?php echo form_label('Date','date',array('class'=>'control-label'))?>
+				<?php echo form_label('First Date Distribution','date',array('class'=>'control-label'))?>
 				<?php echo form_input(array('name'=>'date_from','class'=>'form-control input-tanggal','size'=>'10'))?>
 				<?php echo form_input(array('name'=>'date_to','class'=>'form-control input-tanggal','size'=>'10'))?>
 			</div>			
