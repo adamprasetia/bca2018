@@ -140,24 +140,25 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `level` tinyint(4) NOT NULL,
-  `ip_login` varchar(50) NOT NULL,
-  `date_login` datetime NOT NULL,
-  `user_agent` varchar(50) NOT NULL,
+  `ip_login` varchar(50) DEFAULT NULL,
+  `date_login` datetime DEFAULT NULL,
+  `user_agent` varchar(50) DEFAULT NULL,
   `status` tinyint(4) NOT NULL,
-  `user_create` int(11) NOT NULL,
-  `date_create` datetime NOT NULL,
-  `user_update` int(11) NOT NULL,
-  `date_update` datetime NOT NULL,
+  `user_create` int(11) DEFAULT NULL,
+  `date_create` datetime DEFAULT NULL,
+  `user_update` int(11) DEFAULT NULL,
+  `date_update` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- Dumping data for table bca2018.user: ~3 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `name`, `username`, `password`, `level`, `ip_login`, `date_login`, `user_agent`, `status`, `user_create`, `date_create`, `user_update`, `date_update`) VALUES
 	(1, 'Adam Prasetia', 'damz', '202cb962ac59075b964b07152d234b70', 1, '::1', '2017-11-22 00:35:13', 'Windows 7(Google Chrome 62.0.3202.94)', 1, 0, '0000-00-00 00:00:00', 12, '2016-02-01 23:44:22'),
 	(2, 'Teguh Santoso', 'teguh', 'e2f9f842fd8e1ae90dc428d39cab7167', 1, '127.0.0.1', '2016-02-01 17:11:28', 'Windows 7(Google Chrome 48.0.2564.97)', 1, 1, '2016-02-01 17:07:02', 0, '0000-00-00 00:00:00'),
-	(3, 'Jaka Suci Ramadhani', 'jack', '202cb962ac59075b964b07152d234b70', 3, '::1', '2017-03-26 11:04:04', 'Windows 7(Google Chrome 56.0.2924.87)', 1, 0, '2017-03-25 13:16:17', 0, '0000-00-00 00:00:00');
+	(3, 'Jaka Suci Ramadhani', 'jack', '202cb962ac59075b964b07152d234b70', 3, '::1', '2017-03-26 11:04:04', 'Windows 7(Google Chrome 56.0.2924.87)', 1, 0, '2017-03-25 13:16:17', 0, '0000-00-00 00:00:00'),
+	(4, 'Bhakti', 'bray', '202cb962ac59075b964b07152d234b70', 3, '::1', '2017-11-22 01:01:43', 'Windows 7(Google Chrome 62.0.3202.94)', 1, NULL, '2017-11-22 01:01:30', NULL, NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 

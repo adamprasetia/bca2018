@@ -104,8 +104,8 @@ class Interview_model extends CI_Model
 			$data[] = $this->db->where('A.interviewer',$interviewer);
 		}		
 		if($date_from <> '' && $date_to <> ''){
-			$data[] = $this->db->where('A.dist_date >=',format_ymd($date_from));
-			$data[] = $this->db->where('A.dist_date <=',format_ymd($date_to));
+			$data[] = $this->db->where('A.dist_date_first >=',format_ymd($date_from));
+			$data[] = $this->db->where('A.dist_date_first <=',format_ymd($date_to));
 		}		
 		if($valid <> ''){
 			$data[] = $this->db->where('A.valid',$valid);
