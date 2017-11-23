@@ -107,16 +107,22 @@ class Interview_model extends CI_Model
 			$data[] = $this->db->where('A.dist_date_first >=',format_ymd($date_from));
 			$data[] = $this->db->where('A.dist_date_first <=',format_ymd($date_to));
 		}		
-		if($valid <> ''){
-			$data[] = $this->db->where('A.valid',$valid);
-		}		
-		if($audit <> ''){
-			$data[] = $this->db->where('A.audit',$audit);
-		}		
-		if($proses <> ''){
-			$data[] = $this->db->where('A.audit',0);
-			$data[] = $this->db->where('A.valid',0);
-		}		
+		if ($valid || $audit || $proses) {
+			if($valid <> ''){
+				$data[] = $this->db->where('A.valid',$valid);
+			}else{				
+				$data[] = $this->db->where('A.valid',0);	
+			}		
+			if($audit <> ''){
+				$data[] = $this->db->where('A.audit',$audit);
+			}else{				
+				$data[] = $this->db->where('A.audit',0);
+			}
+			if($proses <> ''){
+				$data[] = $this->db->where('A.audit',0);
+				$data[] = $this->db->where('A.valid',0);
+			}		
+		}
 
 		return $data;
 	}
