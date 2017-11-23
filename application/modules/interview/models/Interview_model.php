@@ -86,7 +86,7 @@ class Interview_model extends CI_Model
 
 		$data[] = $this->db->where('A.event',$this->event['id']);
 		$interviewer = $this->input->get('interviewer');
-		if($status <> ''){
+		if($status <> '' && $status <> '0'){
 			$data[] = $this->db->where('A.status',$status);
 		}
 		if($search <> ''){
@@ -100,7 +100,7 @@ class Interview_model extends CI_Model
 				A.email_new like "%'.$search.'%")
 			');
 		}
-		if($interviewer <> ''){
+		if($interviewer <> '' && $interviewer <> '0'){
 			$data[] = $this->db->where('A.interviewer',$interviewer);
 		}		
 		if($date_from <> '' && $date_to <> ''){
@@ -142,7 +142,7 @@ class Interview_model extends CI_Model
 	public function interviewer_dropdown(){
 		$result = $this->db->where('level',3);
 		$result = $this->db->get('user')->result();
-		$data[''] = '- Interviewer -';
+		$data['0'] = '- Interviewer -';
 		foreach($result as $r){
 			$data[$r->id] = $r->name;
 		}
